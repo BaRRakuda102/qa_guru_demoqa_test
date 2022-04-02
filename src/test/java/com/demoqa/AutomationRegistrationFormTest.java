@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.ui.Sleeper;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static java.lang.Thread.sleep;
@@ -33,13 +34,16 @@ public class AutomationRegistrationFormTest {
         $("[aria-label$='November 30th, 1994']").click();
         $("#subjectsInput").setValue("History").pressEnter();
         $(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("img/1.png"); // object
+        $("#uploadPicture").uploadFromClasspath("img/1.png");
         $("#currentAddress").setValue("Slivovaya");
         $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")); // state
+        $("#stateCity-wrapper").$(byText("NCR"));
         $("#city").$(byText("Delhi"));
         $("#submit").click();
 
-        $("#example-modal-sizes-title-lg").shouldHave(Condition.text("Thanks for submitting the form"));
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").$(byText("Vladislav Krasavchik"))
+                .parent().shouldHave(text("Vladislav Krasavchik"));
+        $(".table-responsive").$(byText("89174358231"));
     }
 }
