@@ -1,9 +1,11 @@
 package com.demoqa;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.support.ui.Sleeper;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -29,8 +31,15 @@ public class AutomationRegistrationFormTest {
         $(".react-datepicker__month-select").selectOption("November");
         $(".react-datepicker__year-select").selectOption("1994");
         $("[aria-label$='November 30th, 1994']").click();
-        $("#subjectsInput").setValue("Informatic").pressEnter();
+        $("#subjectsInput").setValue("History").pressEnter();
+        $(byText("Music")).click();
+        $("#uploadPicture").uploadFromClasspath("img/1.png"); // object
+        $("#currentAddress").setValue("Slivovaya");
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")); // state
+        $("#city").$(byText("Delhi"));
+        $("#submit").click();
 
-
+        $("#example-modal-sizes-title-lg").shouldHave(Condition.text("Thanks for submitting the form"));
     }
 }
