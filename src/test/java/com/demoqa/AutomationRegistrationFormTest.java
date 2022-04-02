@@ -44,6 +44,11 @@ public class AutomationRegistrationFormTest {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").$(byText("Vladislav Krasavchik"))
                 .parent().shouldHave(text("Vladislav Krasavchik"));
-        $(".table-responsive").$(byText("89174358231"));
+
+        $(".table-responsive").$(byText("Slivovaya")).parent().shouldHave(text("Slivovaya"));
+        $(".table-responsive").$(byText("domesh.s@yandex.ru"))
+                .parent().shouldHave(text("domesh.s@yandex.ru"));
+
+
     }
 }
