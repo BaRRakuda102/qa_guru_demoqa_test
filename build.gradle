@@ -9,7 +9,10 @@ repositories {
 dependencies {
     testImplementation (
             'org.junit.jupiter:junit-jupiter:5.8.2',
-            'com.codeborne:selenide:6.2.1'
+            'com.codeborne:selenide:6.2.1',
+            'com.github.javafaker:javafaker:1.0.2',
+            "com.googlecode.libphonenumber:libphonenumber:8.12.11"
+
     )
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
