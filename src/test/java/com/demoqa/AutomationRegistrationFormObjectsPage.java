@@ -19,6 +19,7 @@ import static java.lang.String.format;
 
 
 public class AutomationRegistrationFormObjectsPage {
+    RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     Faker faker = new Faker();
 
     String firstName = faker.name().firstName(),
@@ -40,26 +41,27 @@ public class AutomationRegistrationFormObjectsPage {
 
     @Test
     void succesfullTest () {
-        new RegistrationFormPage().openPage();
-        new RegistrationFormPage().setFirstName(firstName);
-        new RegistrationFormPage().setlastName(lastName);
-        new RegistrationFormPage().setEmail(email);
-        new RegistrationFormPage().setClick();
-        new RegistrationFormPage().setNumber(phoneNumber);
-        new RegistrationFormPage().dobleClick();
-        new RegistrationFormPage().dateControl();
-        new RegistrationFormPage().dateSpace();
-        new RegistrationFormPage().setBirthday(birthday);
-        new RegistrationFormPage().setHobbies(hobbies);
-        new RegistrationFormPage().setHobbiesClick();
-        new RegistrationFormPage().uploadImg();
-        new RegistrationFormPage().setCurrentAdress(currentAdress);
-        new RegistrationFormPage().stateClick();
-        new RegistrationFormPage().setValueState();
-        new RegistrationFormPage().setCity();
-        new RegistrationFormPage().submitClick();
 
-        new RegistrationFormPage().setShouldHaveText();
-        new RegistrationFormPage().setResults(firstName,lastName,email,phoneNumber,currentAdress,birthday,hobbies);
+        registrationFormPage.openPage()
+                            .setFirstName(firstName)
+                            .setlastName(lastName)
+                            .setEmail(email)
+                            .setClick()
+                            .setNumber(phoneNumber)
+                            .dobleClick()
+                            .dateControl()
+                            .dateSpace()
+                            .setBirthday(birthday)
+                            .setHobbies(hobbies)
+                            .setHobbiesClick()
+                            .uploadImg()
+                            .setCurrentAdress(currentAdress)
+                            .stateClick()
+                            .setValueState()
+                            .setCity()
+                            .submitClick()
+
+                            .setShouldHaveText()
+                .setResults(firstName,lastName,email,phoneNumber,currentAdress,birthday,hobbies);
     }
 }
