@@ -26,6 +26,8 @@ public class AutomationRegistrationFormFakerTest {
     String email = TestDataGenerator.email(Locale.ENGLISH);
     String phoneNumber = extractPhoneWithoutCountryCode(phone);
     String birthday = BirthdayConverter.convertToShortMonthName();
+    String hobbies = ("History");
+
 
 
 
@@ -52,7 +54,7 @@ public class AutomationRegistrationFormFakerTest {
         $("#dateOfBirthInput").sendKeys(Keys.CONTROL + "a");
         $("#dateOfBirthInput").sendKeys(Keys.SPACE);
         $("#dateOfBirthInput").setValue(birthday).pressEnter();
-        $("#subjectsInput").setValue("History").pressEnter();
+        $("#subjectsInput").setValue(hobbies).pressEnter();
         $(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("img/1.png");
         $("#currentAddress").setValue(currentAdress);
@@ -63,7 +65,7 @@ public class AutomationRegistrationFormFakerTest {
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text(firstName), text(lastName), text(email), text(phoneNumber),
-                text(currentAdress), text(BirthdayConverter.convertToFullMonthName(birthday)));
+                text(currentAdress), text(BirthdayConverter.convertToFullMonthName(birthday)), text(hobbies));
 
 
 
