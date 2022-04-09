@@ -12,13 +12,16 @@ import static com.codeborne.selenide.Selenide.$;
 
 
 public class AutomationRegistrationFormTest {
+
+    String email = "domesh.s@yandex.ru";
+
     @BeforeAll
     static void BeforeAll(){
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
 
-    String email = "domesh.s@yandex.ru";
+
     @Test
     void succesfullTest () {
         Selenide.open("/automation-practice-form");
