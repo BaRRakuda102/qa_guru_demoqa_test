@@ -1,21 +1,13 @@
 package com.demoqa;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.demoqa.pages.RegistrationFormPage;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
-
 import java.util.Locale;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static com.demoqa.PhoneNumberHelper.extractPhoneWithoutCountryCode;
-import static java.lang.String.format;
+
 
 
 public class AutomationRegistrationFormObjectsPage {
@@ -24,14 +16,14 @@ public class AutomationRegistrationFormObjectsPage {
 
     String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
-            currentAdress = faker.address().streetAddress();
-    String phone = TestDataGenerator.phoneNumber(new Locale("ru"));
-    String email = TestDataGenerator.email(Locale.ENGLISH);
+            currentAddress = faker.address().streetAddress();
+    String phone = com.demoqa.TestDataGenerator.phoneNumber(new Locale("ru"));
+    String email = com.demoqa.TestDataGenerator.email(Locale.ENGLISH);
     String phoneNumber = extractPhoneWithoutCountryCode(phone);
-    String birthday = BirthdayConverter.convertToShortMonthName();
+    String birthday = com.demoqa.BirthdayConverter.convertToShortMonthName();
     String hobbies = ("History");
 
-    String expectedFullName = format("%s %s" , firstName, lastName);
+
 
     @BeforeAll
     static void BeforeAll(){
@@ -40,28 +32,25 @@ public class AutomationRegistrationFormObjectsPage {
     }
 
     @Test
-    void succesfullTest () {
+    void successFullTest () {
 
         registrationFormPage.openPage()
                             .setFirstName(firstName)
                             .setlastName(lastName)
                             .setEmail(email)
-                            .setClick()
+                            .choosingGender()
                             .setNumber(phoneNumber)
-                            .dobleClick()
+                            .fieldSelection()
                             .dateControl()
                             .dateSpace()
                             .setBirthday(birthday)
                             .setHobbies(hobbies)
-                            .setHobbiesClick()
                             .uploadImg()
-                            .setCurrentAdress(currentAdress)
+                            .setCurrentAddress(currentAddress)
                             .stateClick()
-                            .setValueState()
-                            .setCity()
                             .submitClick()
 
-                            .setShouldHaveText()
-                .setResults(firstName,lastName,email,phoneNumber,currentAdress,birthday,hobbies);
+                            .chekingHaveText()
+                .checkingTheResult(firstName,lastName,email,phoneNumber,currentAddress,birthday,hobbies);
     }
 }

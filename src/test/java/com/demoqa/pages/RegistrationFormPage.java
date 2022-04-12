@@ -32,7 +32,7 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setClick () {
+    public RegistrationFormPage choosingGender () {
         $(byText("Male")).click();
         return this;
     }
@@ -40,7 +40,7 @@ public class RegistrationFormPage {
         $("#userNumber").sendKeys(Keys.chord(phoneNumber));
         return this;
     }
-    public RegistrationFormPage dobleClick() {
+    public RegistrationFormPage fieldSelection() {
         $("#dateOfBirthInput").click();
         return this;
     }
@@ -57,42 +57,36 @@ public class RegistrationFormPage {
         return this;
     }
     public RegistrationFormPage setHobbies(String hobbies) {
+        $(byText("Music")).click();
         $("#subjectsInput").setValue(hobbies).pressEnter();
         return this;
     }
-    public RegistrationFormPage setHobbiesClick() {
-        $(byText("Music")).click();
-        return this;
-    }
+
     public RegistrationFormPage uploadImg() {
         $("#uploadPicture").uploadFromClasspath("img/1.png");
         return this;
     }
-    public RegistrationFormPage setCurrentAdress(String currentAdress) {
-        $("#currentAddress").setValue(currentAdress);
+    public RegistrationFormPage setCurrentAddress(String currentAddress) {
+        $("#currentAddress").setValue(currentAddress);
         return this;
     }
     public RegistrationFormPage stateClick() {
         $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
         return this;
     }
-    public RegistrationFormPage setValueState() {
-        $("#stateCity-wrapper").$(byText("NCR"));
-        return this;
-    }
-    public RegistrationFormPage setCity() {
-        $("#city").$(byText("Delhi"));
-        return this;
-    }
+
     public RegistrationFormPage submitClick() {
         $("#submit").click();
         return this;
     }
-    public RegistrationFormPage setShouldHaveText() {
+    public RegistrationFormPage chekingHaveText() {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         return this;
     }
-    public RegistrationFormPage setResults(String firstName, String lastName, String email, String phoneNumber, String currentAdress,
+    public RegistrationFormPage checkingTheResult(String firstName, String lastName, String email, String phoneNumber, String currentAdress,
                            String birthday, String hobbies) {
         $(".table-responsive").shouldHave(text(firstName), text(lastName), text(email), text(phoneNumber),
                 text(currentAdress), text(BirthdayConverter.convertToFullMonthName(birthday)), text(hobbies));

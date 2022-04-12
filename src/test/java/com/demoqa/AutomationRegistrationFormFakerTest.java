@@ -31,10 +31,6 @@ public class AutomationRegistrationFormFakerTest {
 
 
 
-    String expectedFullName = format("%s %s" , firstName, lastName);
-
-
-
 
     @BeforeAll
     static void BeforeAll(){
@@ -69,9 +65,6 @@ public class AutomationRegistrationFormFakerTest {
 
 
 
-        $(".table-responsive").$(byText(expectedFullName)).parent().shouldHave(text(expectedFullName));
-        $(".table-responsive").$(byText(email))
-                .parent().shouldHave(text(email));
 
 
     }

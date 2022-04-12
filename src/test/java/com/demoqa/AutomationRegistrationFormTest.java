@@ -39,8 +39,9 @@ public class AutomationRegistrationFormTest {
         $("#uploadPicture").uploadFromClasspath("img/1.png");
         $("#currentAddress").setValue("Slivovaya");
         $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR"));
-        $("#city").$(byText("Delhi"));
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
